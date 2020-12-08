@@ -5,7 +5,7 @@ exports.up = function(knex) {
       table.text('make', 50).notNullable()
       table.text('model', 50).notNullable()
       table.text('vin', 25)
-      table.float('milage')
+      table.float('mileage')
   })
 };
 
