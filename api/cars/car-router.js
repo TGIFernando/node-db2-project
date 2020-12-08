@@ -25,6 +25,22 @@ router.post('/', validateCar, async (req, res) => {
     }
 })
 
+router.put('/:id', validateID, validateCar, async (req, res) => {
+    try {
+        const car = await db.update(req.id, req.body)
+        res.status(200).json(car)
+    } catch (error) {
+        res.status(500).json({ message: error.message})
+    }
+})
 
+router.delete('/:id', validateID, async (req, res) => {
+    try {
+        const cars = await db.remove(req.id)
+        res.status(200).json(cars)
+    } catch (error) {
+        res.status(500).json({ message: error.message})
+    }
+})
 
 module.exports = router
